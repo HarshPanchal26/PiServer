@@ -1,11 +1,11 @@
 {
    "version": 2,
-   "name": "Investi-PI",
+   "name": "PI-Server",
    "builds": [
       { "src": "./server.js", "use": "@vercel/node" }
    ],
    "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
+      { "source": "/(.*)", "destination": "/server.js" }
    ]
 }
 
