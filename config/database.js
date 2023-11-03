@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const connectionWithAtlas = ()=>{
 
     mongoose
-    .connect(process.env.MONGODB_CONNECT_STRING , {
+    .connect(process.env.MONGODB_CONNECT_STRING_VERCEL , {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             // useCreateIndex: true,
