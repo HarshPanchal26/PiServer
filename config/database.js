@@ -12,7 +12,7 @@ const connectionWithAtlas = ()=>{
             // useFindAndModify: false,
     })
     .then(()=>{
-        console.log("Connected with mongoDB atlas")
+        console.warn("Connected with mongoDB atlas")
     }).catch((error)=>{
         console.log("Error from connection ===> :" , error.message)
     })

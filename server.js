@@ -22,7 +22,7 @@ const { ServerSocket } = require('./socketio.js')
 const path = require('path')
 
 app.use(cors({
-    origin : 'https://piserver.vercel.app/'
+    origin : '*'
 }));
 
 app.use(bodyparser.json());
@@ -33,7 +33,7 @@ app.use(
 app.use(cookieparser());
 
 const httpSever = app.listen(port, () => {
-    console.log(`Connnected with express server ${port}`)
+    console.warn(`Connnected with express server ${port}`)
     connectionWithAtlas()
 })
 
