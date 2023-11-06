@@ -17,7 +17,7 @@ class ServerSocket {
             pingTimeout: 5000,
             cookie: false,
             cors: {
-                origin: ['*', 'https://admin.socket.io']
+                origin: ['*', 'https://admin.socket.io' , 'https://piserver.vercel.app/']
             }
         });
 
