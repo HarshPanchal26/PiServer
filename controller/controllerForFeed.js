@@ -1,5 +1,4 @@
 const ServiceForThoughts = require('../services/serviceForThoughts')
-// const {io} = require('../server')
 
 const controllerForAllFeed = async(req ,res)=>{
     let io = req.app.get('io')
