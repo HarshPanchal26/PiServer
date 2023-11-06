@@ -1,25 +1,25 @@
-const dotenv =  require('dotenv');
+const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
 
-const connectionWithAtlas = ()=>{
+const connectionWithAtlas = () => {
     mongoose
-    .connect(process.env.MONGODB_URI , {
+        .connect('mongodb+srv://vercel-admin-user:z2DY91lC4OfJSuP5@clusterpi.3x7htsc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             // useCreateIndex: true,
             // useFindAndModify: false,
-    })
-    .then(()=>{
-        console.log("Connected with mongoDB atlas")
-    }).catch((error)=>{
-        console.log("Error from connection ===> :" , error.message)
-    })
-    
-    
+        })
+        .then(() => {
+            console.log("Connected with mongoDB atlas")
+        }).catch((error) => {
+            console.log("Error from connection ===> :", error.message)
+        })
+
+
 }
-    
-module.exports = { connectionWithAtlas , mongoose}
+
+module.exports = { connectionWithAtlas, mongoose }
 
 
 
