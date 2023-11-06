@@ -2,7 +2,6 @@ const { mongoose } = require('../config/database')
 const { SchemaForCommanUserData } = require('../models/signinmodels')
 const jwt = require('jsonwebtoken');
 
-
 // function for check whether user with same email and username is exist or not 
 const isValidUser = async (req, res, next) => {
     const { authenticationData } = req.body;
