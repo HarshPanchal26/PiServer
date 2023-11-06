@@ -1,4 +1,6 @@
 require('dotenv').config();
+require('events').EventEmitter.prototype._maxListeners = 70;
+require('events').defaultMaxListeners = 70;
 const express = require('express');
 const bodyparser = require('body-parser');
 const app = express();
