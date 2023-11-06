@@ -9,22 +9,6 @@ const {
 
 const ServiceForProducts = require('../services/serviceForProducts')
 
-const findSchemaAndCollection = (type) => {
-    let Schema = null;
-    let Collection = null;
-    if (type === 'product') {
-        Schema = SchemaForCompany
-        Collection = 'user-as-company'
-    } else if (type === 'CF') {
-        Schema = SchemaForCF
-        Collection = 'user-as-CF'
-    } else {
-        Schema = SchemaForIndividuals
-        Collection = 'user-as-individual'
-    }
-    return { Schema: Schema, Collection: Collection }
-}
-
 const createUser = (objForData, objForSignIn) => {
     const responceObj = {
         status: false,
@@ -100,7 +84,21 @@ const createSession = (obj) => {
     })
 }
 
-
+const findSchemaAndCollection = (type) => {
+    let Schema = null;
+    let Collection = null;
+    if (type === 'product') {
+        Schema = SchemaForCompany
+        Collection = 'user-as-company'
+    } else if (type === 'CF') {
+        Schema = SchemaForCF
+        Collection = 'user-as-CF'
+    } else {
+        Schema = SchemaForIndividuals
+        Collection = 'user-as-individual'
+    }
+    return { Schema: Schema, Collection: Collection }
+}
 
 module.exports = { createUser, createSession, encryptedPassword, findSchemaAndCollection };
 

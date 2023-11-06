@@ -5,14 +5,14 @@ const mongoose = require('mongoose');
 const connectionWithAtlas = ()=>{
 
     mongoose
-    .connect(process.env.MONGODB_URI , {
+    .connect(process.env.MONGODB_CONNECT_STRING , {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             // useCreateIndex: true,
             // useFindAndModify: false,
     })
     .then(()=>{
-        console.warn("Connected with mongoDB atlas")
+        console.log("Connected with mongoDB atlas")
     }).catch((error)=>{
         console.log("Error from connection ===> :" , error.message)
     })

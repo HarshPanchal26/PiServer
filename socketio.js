@@ -17,7 +17,7 @@ class ServerSocket {
             pingTimeout: 5000,
             cookie: false,
             cors: {
-                origin: ['*', 'https://admin.socket.io' , 'https://piserver.vercel.app/']
+                origin: ['*', 'https://admin.socket.io']
             }
         });
 
@@ -148,6 +148,11 @@ class ServerSocket {
     triggerNotificatioinForResultOfCounterOffer = (OfferMakees_custom_id , idOfCounterOfferNotoficationDocumens)=>{
         const { original_id } = this.findUserSocketId(OfferMakees_custom_id);
         this.io.to(original_id).emit('action-on-counterOffer', idOfCounterOfferNotoficationDocumens)        
+    }
+
+    triggerNotificatioinForResultOfClaimInvestor = (CompanyID ,Accepter_id , idOfInvetsmentDoc)=>{
+        const { original_id } = this.findUserSocketId(CompanyID);
+        this.io.to(original_id).emit('action-on-claimInvestor', idOfInvetsmentDoc , Accepter_id)        
     }
     
     triggerNotificationForNewPost = (custom_id) => {
