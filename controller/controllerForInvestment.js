@@ -62,9 +62,9 @@ const controllerForNewInvestment = async (req, res) => {
             investment: result
         })
     } catch (error) {
-        console.log("error", error)
+        console.log("error==>", error.message)
         res.status(401).json({
-            error: error
+            message: error.message
         })
     }
 }

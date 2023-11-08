@@ -223,12 +223,12 @@ const AcceptClaimForInvestor = (compnayId , docId, userId) => {
             const Model = dbForNotification.model('Invetsments', SchemaForClaimInvestorsNotification, 'n-counterOffers')
             const res = await Model.updateOne({ 
                 irid: docId ,
-                company : compnayId
             }, {
                 $set: {
                     ['approval'[userId]]: true
                 }
             })
+            console.log("ClaimAction" ,res , docId)
             reslove(res)
         } catch (error) {
             reject(error)
@@ -256,10 +256,20 @@ const DeclineClaimForInvestor = (compnayId ,docId, userId) => {
     })
 }
 
-const fetchClaimInvestorsAction = ()=>{
+const fetchClaimInvestorsAction = (documentID , userId)=>{
     return new Promise(async(reslove ,reject)=>{
         try {
-            
+            const Model = dbForNotification.model('Claim', SchemaForClaimInvestorsNotification, 'n-asinvestors')
+            if(documentID){
+                await Model.findOne({
+                    irid :documentID 
+                })
+            }
+            if(userId){
+                await Model.find({
+                    company : userId 
+                })
+            }    
         } catch (error) {
             
         }

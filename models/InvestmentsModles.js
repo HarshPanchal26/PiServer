@@ -37,18 +37,18 @@ const SchemaForInvestments = new mongoose.Schema({
 },{minimize: false})
 
 
-SchemaForInvestments.pre('save', function (next) {
-    if (!this.isNew) {
-        return next();
-    }
-    let ObjForApproval = {};
-    for (let i = 0; i < this.allInvestor.length; i++) {
-        ObjForApproval.investors[i] = false  
-    }
-    this.approval = ObjForApproval;
-    console.log("Created Obj from pre function", ObjForApproval);
-    next()
-})
+// SchemaForInvestments.pre('save', function (next) {
+//     if (!this.isNew) {
+//         return next();
+//     }
+//     let ObjForApproval = {};
+//     for (let i = 0; i < this.allInvestor.length; i++) {
+//         ObjForApproval.investors[i] = false  
+//     }
+//     this.approval = ObjForApproval;
+//     console.log("Created Obj from pre function", ObjForApproval);
+//     next()
+// })
 
 
 // SchemaForInvestments.post('save', async function (doc) {

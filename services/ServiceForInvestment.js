@@ -36,6 +36,8 @@ const addNewInvestment = (investmentId, rid, ObjForNewInvestment) => {
 
 const createNewInvestment = (object) => {
     return new Promise(async (resolve, reject) => {
+    console.log("Obj is " , object)
+
         try {
             const ModelForProduct = db.model('Investments', SchemaForInvestments, 'investments');
             const res = await ModelForProduct.create(object);
@@ -70,7 +72,7 @@ const acceptClaimForInvestror = (compnayId, docId, useId) => {
     return new Promise(async (reslove, reject) => {
         try {
             const ModelForProduct = db.model('Investments', SchemaForInvestments, 'investments');
-            const result = ModelForProduct.updateOne(
+            const result = await ModelForProduct.updateOne(
                 {
                     _id: docId,
                     recipient: compnayId
@@ -81,6 +83,7 @@ const acceptClaimForInvestror = (compnayId, docId, useId) => {
                     }
                 }
             )
+            console.log("Res For Acceptance of Claim in main object" , result , compnayId, docId, useId)
             reslove(result);
         } catch (error) {
             reject(error)

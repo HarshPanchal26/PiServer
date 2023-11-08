@@ -70,7 +70,7 @@ const isAutorized = (req, res, next) => {
         try {
             jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
                 if (err) {
-                    res.json({
+                    res.status(401).json({
                         authorized: false,
                         message: 'You Need to Login/SignIn'
                     })
@@ -83,7 +83,6 @@ const isAutorized = (req, res, next) => {
                 }
             })
         } catch (error) {
-            console.log("error in Authorization " , error)
             res.status(401).json({
                 authorized: false,
                 message: error.message

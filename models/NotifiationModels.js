@@ -84,18 +84,18 @@ const SchemaForClaimInvestorsNotification = new mongoose.Schema({
 
 }, { minimize: false })
 
-SchemaForClaimInvestorsNotification.pre('save', function (next) {
-    if (!this.isNew) {
-        return next();
-    }
-    let ObjForApproval = {};
-    for (let i = 0; i < this.allinvestors.length; i++) {
-        ObjForApproval.investors[i] = false
-    }
-    this.approval = ObjForApproval;
-    console.log("Created Obj from pre function in Notofication", ObjForApproval);
-    next()
-})
+// SchemaForClaimInvestorsNotification.pre('save', function (next) {
+//     if (!this.isNew) {
+//         return next();
+//     }
+//     let ObjForApproval = {};
+//     for (let i = 0; i < this.allinvestors.length; i++) {
+//         ObjForApproval.investors[i] = false
+//     }
+//     this.approval = ObjForApproval;
+//     console.log("Created Obj from pre function in Notofication", ObjForApproval);
+//     next()
+// })
 
 
 const SchemaForNewInterests = new mongoose.Schema({

@@ -108,6 +108,11 @@ const SchemaForIndividuals = new mongoose.Schema({
     default  : 'NA',
     required : false,
   },
+  pirank : {
+    type : String,
+    require : false,
+    default : '-' 
+  }
 
 })
 
@@ -232,6 +237,11 @@ const SchemaForCF = new mongoose.Schema({
     type : Date,
     required : false,
     default : new Date()
+  },
+  pirank : {
+    type : String,
+    require : false,
+    default : '-' 
   }
 
 })
@@ -375,6 +385,11 @@ const SchemaForCompany = new mongoose.Schema({
     required : false,
     default : []
   },
+  pirank : {
+    type : String,
+    require : false,
+    default : '-' 
+  }
 
 } , { minimize: false })
 

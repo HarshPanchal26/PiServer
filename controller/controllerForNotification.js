@@ -109,7 +109,7 @@ const controllerForResultOfClaimInvesttorsAction = async(req  ,res)=>{
     let documentID = req.body.docID;
     let userId = res.locals.uid;
     try {
-        await ServiceForNotification.fetchClaimInvestorsAction(documentID)
+        await ServiceForNotification.fetchClaimInvestorsAction(documentID , userId)
         res.status(201).json({
             fetch : true,
             message : ''
