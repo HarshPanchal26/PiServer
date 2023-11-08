@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const connectionWithAtlas = () => {
     mongoose
-        .connect('mongodb+srv://vercel-admin-user:z2DY91lC4OfJSuP5@clusterpi.3x7htsc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+        .connect( process.env.MONGODB_CONNECT_STRING , {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             // useCreateIndex: true,
