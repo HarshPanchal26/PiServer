@@ -24,7 +24,12 @@ router.post('/create', isAutorized, ProductController.controllerForProducts);
 router.post('/create/usp', isAutorized, (req, res, next) => {
     req.type = 'create';
     next();
-}, ProductController.contollerForUSPs);
+},
+    upload.fields([
+        { name: 'uspmedia' },
+        { name: 'uspdata' }
+    ]),
+    ProductController.contollerForUSPs);
 router.post('/create/media', isAutorized, (req, res, next) => {
     req.type = 'create';
     next();
@@ -33,10 +38,10 @@ router.post('/create/media', isAutorized, (req, res, next) => {
     { name: 'data' }
 ]), ProductController.controllerForMedia);
 
-router.post('/create/pitch' , isAutorized , ProductController.controllerForPitch)
+router.post('/create/pitch', isAutorized, ProductController.controllerForPitch)
 
-router.post('/add/pepole' , isAutorized , ProductController.controllerForAddPepole)
+router.post('/add/pepole', isAutorized, ProductController.controllerForAddPepole)
 
-router.get('/fetch/all' , isAutorized , ProductController.controllerForRetriveProduvtWithInvestments)
+router.get('/fetch/all', isAutorized, ProductController.controllerForRetriveProduvtWithInvestments)
 
 module.exports = router;

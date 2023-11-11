@@ -48,7 +48,7 @@ const controllerForLogIn = async (req, res) => {
           console.log("ERORR IS :", 2)
           res.status(401).json({
             authenticated: false,
-            message: `Network Error`
+            message: `Your password or Email might not correct`
           })
         }
       })

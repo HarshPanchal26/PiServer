@@ -1,5 +1,6 @@
 const { default: axios } = require('axios');
 const ServiceForProducts = require('../services/serviceForProducts');
+const ServiceForFirebase = require('../services/serviceForFirebase');
 // const { findAllInRenderedTree } = require('react-dom/test-utils');
 const { findSchemaAndCollection } = require('../services/servicesForAuthentication');
 
@@ -50,10 +51,17 @@ const controllerForPepole = () => {
 }
 
 const contollerForUSPs = async (req, res) => {
-
+    const mediaFile = req.files?.['uspmedia']?.[0]
+    const metaData = JSON.parse(req.body['uspdata']);
     if (req.type === 'create') {
         try {
-            const createdData = await ServiceForProducts.createUSPForProduct({ rid: res.locals.uid }, req.body);
+            let createdAt = new Date().getTime();
+            const result = await ServiceForFirebase.UploadImageOnFirebabe(mediaFile , 'uspmedia' ,createdAt)
+            let objToPass = {
+                ...metaData,
+                imageUrl:result.URL
+            }
+            const createdData = await ServiceForProducts.createUSPForProduct({ rid: res.locals.uid }, objToPass);
             res.status(201).json({
                 created: true,
                 usp: createdData

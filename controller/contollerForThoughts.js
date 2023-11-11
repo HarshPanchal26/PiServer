@@ -8,9 +8,6 @@ const controllerForCreateThoughts = async (req, res) => {
   const mediaFile = req.files?.['image']?.[0]
   const metaData = JSON.parse(req.body['data']);
 
-  console.log("Parsed Image ", mediaFile);
-  console.log("Parsed data ", metaData);
-
   let createdAt = new Date().getTime();
 
   const ObjectForPost = {

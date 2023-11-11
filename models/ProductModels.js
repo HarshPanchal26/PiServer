@@ -45,7 +45,7 @@ const SchmaForUSPs = new mongoose.Schema({
         type: String,
         required: false
     },
-    url: {
+    imageUrl: {
         type: String,
         required: false
     },

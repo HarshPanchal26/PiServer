@@ -94,7 +94,7 @@ const createUSPForProduct = (condition, object) => {
             let updatedObject = {
                 title: object.title,
                 aboutUSP: object.aboutUSP,
-                url: object.imageUrl,
+                imageUrl: object.imageUrl,
                 // likes: object.likes
             }
             const result = await ModelForUSP.updateOne(condition, {
