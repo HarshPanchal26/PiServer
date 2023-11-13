@@ -20,11 +20,11 @@ const InvestmentRoute = require('./routes/InvestmentRoute');
 const PitchRoute = require('./routes/PitchRoute');
 const RouteForProduct = require('./routes/ProductRoutes');
 const controllerForProfile = require('./controller/controllerForProfile');
-const { ServerSocket } = require('./socketio.js')
+const {ServerSocket} = require('./socketio.js')
 const path = require('path')
 
 app.use(cors({
-    origin : 'https://piserver.vercel.app',
+    origin : '',
 }));
 
 app.use(bodyparser.json());
@@ -41,6 +41,14 @@ const httpSever = app.listen(port, () => {
 
 const io = new ServerSocket(httpSever);
 app.set('io' , io)
+
+app.all('*', function(req, res, next){
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS , PUT ")
+    res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept")
+    res.header("Access-Control-Max-Age", "1728000")
+    next();
+});
 
 app.get('/', (req, res) => {
     res.send("I am MAIN Route")

@@ -4,7 +4,7 @@ const cookieParser = require('cookie');
 const jwt = require('jsonwebtoken');
 
 class ServerSocket {
-    instance;
+    instance;       
     io;
     users;
     socketInstnace;
