@@ -21,6 +21,7 @@ const controllerForLogIn = async (req, res) => {
               .then((token) => {
                 console.log("Token has been created" , token)
                 res.cookie('access_token', token, {
+                  domain: 'https://www.investipi.com/',
                   httpOnly: true,
                   secure: true,
                   sameSite: true,
