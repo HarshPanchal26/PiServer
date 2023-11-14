@@ -20,13 +20,17 @@ const controllerForLogIn = async (req, res) => {
             createSession({ uid: user._doc._id, type: user._doc.type })
               .then((token) => {
                 console.log("Token has been created" , token)
-                res.cookie('access_token', token, {
-                  domain: '.investipi.com', // Remove the protocol
-                  httpOnly: false,
-                  secure: false,
-                  sameSite: 'Strict', // Use 'Strict' for better security
-                  maxAge: 1800000,
-                })
+                try {
+                  res.cookie('access_token', token, {
+                    domain: '.investipi.com', // Remove the protocol
+                    httpOnly: false,
+                    secure: false,
+                    sameSite: 'Strict', // Use 'Strict' for better security
+                    maxAge: 1800000,
+                  })
+                } catch (error) {
+                  console.log("Error while Storing cookie" , error)
+                }
                 res.status(201).json({
                   authenticated: true,
                   message: 'Welcome Back'
