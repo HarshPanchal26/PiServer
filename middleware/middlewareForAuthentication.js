@@ -64,7 +64,7 @@ const isTokenValid = (req, res, next) => {
 
 // method for authenticate session token whethere it is valid or not 
 const isAutorized = (req, res, next) => {
-    console.log("headers is Authorized ==>", req.cookies['access_token']);
+    console.log("headers is Authorized <==>", req.cookies['access_token']);
     let token = req.cookies['access_token'];
     if (token) {
         try {
