@@ -25,6 +25,7 @@ const path = require('path')
 
 app.use(cors({
     origin : 'https://www.investipi.com',
+    credentials: true,
 }));
 
 app.use(bodyparser.json());
