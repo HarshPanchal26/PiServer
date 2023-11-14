@@ -24,7 +24,8 @@ const {ServerSocket} = require('./socketio.js')
 const path = require('path')
 
 app.use(cors({
-    origin : '',
+    origin : 'https://investipi.com',
+    credentials : true
 }));
 
 app.use(bodyparser.json());
