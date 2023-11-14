@@ -25,7 +25,7 @@ const controllerForLogIn = async (req, res) => {
                     domain: '.investipi.com', // Remove the protocol
                     httpOnly: false,
                     secure: false,
-                    sameSite: 'Strict', // Use 'Strict' for better security
+                    sameSite: 'none', // Use 'Strict' for better security
                     maxAge: 1800000,
                   })
                 } catch (error) {
