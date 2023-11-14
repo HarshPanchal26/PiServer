@@ -21,7 +21,7 @@ const controllerForLogIn = async (req, res) => {
               .then((token) => {
                 console.log("Token has been created" , token)
                 res.cookie('access_token', token, {
-                  domain: 'www.investipi.com', // Remove the protocol
+                  domain: 'investipi.com', // Remove the protocol
                   httpOnly: false,
                   secure: false,
                   sameSite: 'Strict', // Use 'Strict' for better security
