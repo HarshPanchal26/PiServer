@@ -15,9 +15,7 @@ const controllerForLogOut = async(req , res)=>{
                 } else {
                     console.log("decoded token " , decoded.uid)
                     res.cookie('access_token' ,'' , {   
-                        httpOnly : true, // To prevent access from javascript   
-                        secure : true,   // For secure connection   
-                        sameSite : true, // To limit cross site request       
+                        domain: '.investipi.com', // Remove the protocol
                         expires : new Date(0)
                     })
 
