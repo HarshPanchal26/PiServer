@@ -24,7 +24,7 @@ const controllerForLogIn = async (req, res) => {
                   res.cookie('access_token', token, {
                     domain: 'investipi.com', // Remove the protocol
                     secure: true,
-                    sameSite: 'none', // Use 'Strict' for better security
+                    sameSite: 'None', // Use 'Strict' for better security
                     maxAge: 1800000,
                   })
                 } catch (error) {
