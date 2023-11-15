@@ -93,7 +93,9 @@ const controllerForProfileByCategory = async (req, res) => {
     const category = req.query.category;
     try {
         const data = await ServiceForProfile.fetchProfileByCategoryandFilters(category);
-        res.status(201).json(data);
+        res.status(201).json({
+            newData : data
+        });
     } catch (error) {
         console.log("Error insde controller ", error)
         res.status(401).json({

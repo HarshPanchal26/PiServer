@@ -136,8 +136,8 @@ const fetchProductprofile = (filterObj) => {
 const fetchProfileByCategoryandFilters = (category) => {
     return new Promise(async(resolve, reject) => {
         try {
-            const Model = db.model('Users', SchemaForCompany, 'common-users-storage');
-            const res = await Model.find({type : category});
+            const Model = db.model('Users', SchemaForCommanUserData, 'common-users-storage');
+            const res = await Model.find({type : category}  , {password : 0 }).limit(10);
             resolve(res)
         } catch (error) {
             reject(error)
