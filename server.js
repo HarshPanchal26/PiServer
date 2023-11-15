@@ -25,6 +25,8 @@ const path = require('path')
 
 app.use(cors({
     origin : 'https://www.investipi.com',
+    methods: ['POST', 'GET', 'OPTIONS', 'PUT'],
+    allowedHeaders: ['Origin', 'Content-Type', 'Accept'],
     credentials: true,
 }));
 
@@ -43,13 +45,14 @@ const httpSever = app.listen(port, () => {
 const io = new ServerSocket(httpSever);
 app.set('io' , io)
 
-app.all('*', function(req, res, next){
-    res.header("Access-Control-Allow-Origin", "https://www.investipi.com")
-    res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS , PUT ")
-    res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept")
-    res.header("Access-Control-Max-Age", "1728000")
-    next();
-});
+// app.all('*', function(req, res, next){
+//     res.header("Access-Control-Allow-Origin", "https://www.investipi.com")
+//     res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS , PUT ")
+//     res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept"),
+//     res.header('Access-Control-Allow-Credentials', "true");
+//     res.header("Access-Control-Max-Age", "1728000")
+//     next();
+// });
 
 app.get('/', (req, res) => {
     res.send("I am MAIN Route")
