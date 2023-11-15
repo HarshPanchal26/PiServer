@@ -24,7 +24,7 @@ const {ServerSocket} = require('./socketio.js')
 const path = require('path')
 
 app.use(cors({
-    origin : 'https://www.investipi.com',
+    origin : ['https://www.investipi.com' , 'https://investipi.com'],
     methods: ['POST', 'GET', 'OPTIONS', 'PUT'],
     allowedHeaders: ['Origin', 'Content-Type', 'Accept'],
     credentials: true,
