@@ -89,14 +89,11 @@ const fetchNotificatinForClaimedInvestors = (idofNotification, rid) => {
                 reslove(res)
             } else {
                 const res = await Model.find({
-
                     $or: [
                         { allinvestors: rid },
                         { leadinvestors: rid }
                     ]
-
                 });
-                console.log("!!!!!!!!!!!!Climed Posistion By Filter", res)
                 reslove(res)
             }
 
