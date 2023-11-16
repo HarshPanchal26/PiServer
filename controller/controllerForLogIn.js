@@ -22,6 +22,7 @@ const controllerForLogIn = async (req, res) => {
                 console.log("Token has been created" , token)
                 try {
                   res.cookie('access_token', token, {
+                    httpOnly : true,
                     domain: '.investipi.com', // Remove the protocol
                     maxAge: 1800000,
                   })

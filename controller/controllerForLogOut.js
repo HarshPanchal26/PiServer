@@ -16,6 +16,7 @@ const controllerForLogOut = async(req , res)=>{
                     console.log("decoded token " , decoded.uid)
                     res.cookie('access_token' ,'' , {   
                         domain: '.investipi.com', // Remove the protocol
+                        httpOnly : true,
                         expires : new Date(0)
                     })
 
