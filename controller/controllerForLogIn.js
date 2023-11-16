@@ -23,7 +23,7 @@ const controllerForLogIn = async (req, res) => {
                 try {
                   res.cookie('access_token', token, {
                     domain: '.investipi.com', // Remove the protocol
-                    maxAge: 1800000 * 100,
+                    maxAge: 15 * 24 * 60 * 60 * 1000,
                   })
                 } catch (error) {
                   console.log("Error while Storing cookie" , error)
