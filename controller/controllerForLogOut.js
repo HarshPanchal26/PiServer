@@ -15,7 +15,7 @@ const controllerForLogOut = async(req , res)=>{
                 } else {
                     console.log("decoded token " , decoded.uid)
                     res.cookie('access_token' ,'' , {   
-                        domain: '.investipi.com', // Remove the protocol,
+                        // domain: '.investipi.com', // Remove the protocol,
                         expires : new Date(0)
                     })
 

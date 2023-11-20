@@ -163,7 +163,20 @@ const createPitchForProduct = (rid, object) => {
 
     let FinalObject = {
         rid: rid,
-        ...additionalDetails,
+        avgSixMonthCustomer : additionalDetails.avgSixMonthCustomer,
+        avgSixMonthSale : additionalDetails.avgSixMonthSale,
+        avgSixMonthViews : additionalDetails.avgSixMonthViews,
+        avgYearCustomer : additionalDetails.avgYearCustomer,
+        avgYearSale : additionalDetails.avgYearSale,
+        avgYearViews : additionalDetails.avgYearViews,
+        buisnessMode : additionalDetails.buisnessMode,
+        currentValuation : additionalDetails.currentValuation,
+        fundingType: additionalDetails.fundingType,
+        offeredEquity : additionalDetails.offeredEquity,
+        seekingFund : additionalDetails.seekingFund,
+        startDate : additionalDetails.startDate,
+        targetAudiences : additionalDetails.targetAudiences,
+        url : additionalDetails.url,
         maximumOffer : additionalDetails.maximunofferedEquity,
         faqs: {
             ...ObjectForFaqs

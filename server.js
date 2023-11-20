@@ -24,8 +24,8 @@ const {ServerSocket} = require('./socketio.js')
 const path = require('path')
 
 app.use(cors({
-    origin : ['https://www.investipi.com' , 'https://investipi.com', 'http://www.investipi.com' , 'http://investipi.com' ],
-    // origin : 'http://localhost:8080',
+    // origin : ['https://www.investipi.com' , 'https://investipi.com', 'http://www.investipi.com' , 'http://investipi.com' ],
+    origin : 'http://localhost:8080',
     methods: ['POST', 'GET', 'OPTIONS', 'PUT'],
     allowedHeaders: ['Origin', 'Content-Type', 'Accept'],
     credentials: true,

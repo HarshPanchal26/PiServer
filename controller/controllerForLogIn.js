@@ -22,8 +22,8 @@ const controllerForLogIn = async (req, res) => {
                 console.log("Token has been created" , token)
                 try {
                   res.cookie('access_token', token, {
-                    domain: '.investipi.com', // Remove the protocol
-                    maxAge: 15 * 24 * 60 * 60 * 1000,
+                    // domain: '.investipi.com', // Remove the protocol
+                    maxAge: 1296000000,
                   })
                 } catch (error) {
                   console.log("Error while Storing cookie" , error)
