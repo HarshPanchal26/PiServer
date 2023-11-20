@@ -22,7 +22,7 @@ const controllerForLogIn = async (req, res) => {
                 console.log("Token has been created" , token)
                 try {
                   res.cookie('access_token', token, {
-                    // domain: '.investipi.com', // Remove the protocol
+                    domain: '.investipi.com', // Remove the protocol
                     maxAge: 1296000000,
                   })
                 } catch (error) {
