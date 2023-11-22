@@ -94,8 +94,10 @@ const createUSPForProduct = (condition, object) => {
             let updatedObject = {
                 title: object.title,
                 aboutUSP: object.aboutUSP,
-                imageUrl: object.imageUrl,
-                // likes: object.likes
+                // imageUrl: object.imageUrl,
+            }
+            if(!object.imageUrl){
+                object.imageUrl = 'https://firebasestorage.googleapis.com/v0/b/projectpi-fa7b4.appspot.com/o/uspmedia%2FUSP.official.jpg?alt=media&token=11b9cd84-ad1a-4f0c-adc0-d3d9b4ce0154'
             }
             const result = await ModelForUSP.updateOne(condition, {
                 $push: {
@@ -103,9 +105,32 @@ const createUSPForProduct = (condition, object) => {
                 }
 
             });
-            console.log("Product USP is", result, object);
+            console.log("Product USP is" , result);
             resolve(result)
         } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+const updateUSPForProduct = (condition, object) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const ModelForUSP = dbForOthers.model('usps', SchemaForMyProduct, 'products');
+            let updatedObject = {
+                title: object.title,
+                aboutUSP: object.aboutUSP,
+                imageUrl: object.imageUrl,
+            }
+            const result = await ModelForUSP.updateOne(condition, {
+                $set : {
+                    [`usp.${object.index}`] : updatedObject
+                }
+            });
+            console.log("Updated Product USP is"  , result);
+            resolve(result)
+        } catch (error) {
+            console.log("Error in Updation" , error)
             reject(error);
         }
     })
@@ -229,6 +254,7 @@ module.exports = {
     retriveProduct,
     retriveProductwithInestments,
     createUSPForProduct,
+    updateUSPForProduct,
     createMediaForProduct,
     createPitchForProduct,
     addPepoleForOrganisation

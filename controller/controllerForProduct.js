@@ -8,7 +8,7 @@ const controllerForProducts = async (req, res) => {
     const { uid, type } = res.locals;
     console.log(type);
     try {
-        
+
         const data = await ServiceForProducts.createProduct({ rid: uid });
         res.status(201).json({
             data: data
@@ -56,15 +56,17 @@ const contollerForUSPs = async (req, res) => {
     if (req.type === 'create') {
         try {
             let createdAt = new Date().getTime();
-            const result = await ServiceForFirebase.UploadImageOnFirebabe(mediaFile , 'uspmedia' ,createdAt)
             let objToPass = {
                 ...metaData,
-                imageUrl:result.URL
+            }
+            if (mediaFile) {
+                const result = await ServiceForFirebase.UploadImageOnFirebabe(mediaFile, 'uspmedia', createdAt)
+                objToPass.imageUrl = result.URL;
             }
             const createdData = await ServiceForProducts.createUSPForProduct({ rid: res.locals.uid }, objToPass);
             res.status(201).json({
                 created: true,
-                usp: createdData
+                newData: createdData
             })
         } catch (error) {
             res.status(402).json({
@@ -73,7 +75,26 @@ const contollerForUSPs = async (req, res) => {
             })
         }
     } else if (req.type === 'update') {
-
+        try {
+            let createdAt = new Date().getTime();
+            let objToPass = {
+                ...metaData,
+            }
+            if (mediaFile) {
+                const result = await ServiceForFirebase.UploadImageOnFirebabe(mediaFile, 'uspmedia', createdAt)
+                objToPass.imageUrl = result.URL;
+            }
+            const createdData = await ServiceForProducts.updateUSPForProduct({ rid: res.locals.uid }, objToPass);
+            res.status(201).json({
+                created: true,
+                newData: createdData
+            })
+        } catch (error) {
+            res.status(402).json({
+                created: false,
+                message: error.message
+            })
+        }
     } else {
         res.status(402).json({
             error: 'SOME INTERNAL ERROR , CONTACT TO SERVICE CENTER'
@@ -108,9 +129,9 @@ const controllerForAddPepole = async (req, res) => {
     }
     try {
         const SchemaForPerson = findSchemaAndCollection(profielObj.type);
-        const SchemaForOrganisation = findSchemaAndCollection(res.locals.type );
+        const SchemaForOrganisation = findSchemaAndCollection(res.locals.type);
 
-        const result = await ServiceForProducts.addPepoleForOrganisation(ObjectForPepole , SchemaForPerson , SchemaForOrganisation);
+        const result = await ServiceForProducts.addPepoleForOrganisation(ObjectForPepole, SchemaForPerson, SchemaForOrganisation);
         res.status(201).json({
             result
         })
@@ -121,20 +142,20 @@ const controllerForAddPepole = async (req, res) => {
     }
 }
 
-const controllerForRetriveProduvtWithInvestments = async(req , res)=>{
+const controllerForRetriveProduvtWithInvestments = async (req, res) => {
     const id = req.query.id;
     try {
         const result = await ServiceForProducts.retriveProductwithInestments(id);
         res.status(201).json({
-            product : result,
-            message : ''
+            product: result,
+            message: ''
         })
-        console.log("result result" ,result)
+        console.log("result result", result)
     } catch (error) {
-        console.log("Error in fetching whole Product" , error)
+        console.log("Error in fetching whole Product", error)
         res.status(201).json({
-            product : null,
-            message : error.message
+            product: null,
+            message: error.message
         })
     }
 }

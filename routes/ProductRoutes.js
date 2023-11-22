@@ -29,7 +29,18 @@ router.post('/create/usp', isAutorized, (req, res, next) => {
         { name: 'uspmedia' },
         { name: 'uspdata' }
     ]),
-    ProductController.contollerForUSPs);
+    ProductController.contollerForUSPs
+);
+router.post('/update/usp', isAutorized, (req, res, next) => {
+    req.type = 'update';
+    next();
+},
+    upload.fields([
+        { name: 'uspmedia' },
+        { name: 'uspdata' }
+    ]),
+    ProductController.contollerForUSPs
+);
 router.post('/create/media', isAutorized, (req, res, next) => {
     req.type = 'create';
     next();

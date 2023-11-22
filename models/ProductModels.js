@@ -47,10 +47,11 @@ const SchmaForUSPs = new mongoose.Schema({
     },
     imageUrl: {
         type: String,
-        required: false
+        required: false,
+        default : 'https://firebasestorage.googleapis.com/v0/b/projectpi-fa7b4.appspot.com/o/uspmedia%2FUSP.official.jpg?alt=media&token=11b9cd84-ad1a-4f0c-adc0-d3d9b4ce0154'
     },
     likes: {
-        type: String,
+        type: Number,
         required: false,
         default: 0,
     }
