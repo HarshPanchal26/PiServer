@@ -13,11 +13,15 @@ const ContollerForSignIn = async(req , res)=>{
             username : username
           }); 
         if(signUp?.token){
-            res.cookie('access_token' , signUp.token , {
-                httpOnly : true, // To prevent access from javascript 
-                secure : true,   //For secure connection 
-                sameSite : true, //To limit cross site request 
-                maxAge : (1800000) // vanish after 1 hour 
+            // res.cookie('access_token' , signUp.token , {
+            //     httpOnly : true, // To prevent access from javascript 
+            //     secure : true,   //For secure connection 
+            //     sameSite : true, //To limit cross site request 
+            //     maxAge : (1800000) // vanish after 1 hour 
+            // })
+            res.cookie('access_token', signUp.token, {
+              domain: '.investipi.com', // Remove the protocol
+              maxAge: 1296000000,
             })
             res.status(200).json({
                 status : true,
